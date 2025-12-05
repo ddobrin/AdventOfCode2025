@@ -1,0 +1,23 @@
+ Plan
+   1. Read Input: Parse the 1.input file line by line.
+   2. Track State: Maintain a currentPosition variable initialized to 50 (representing the dial's position).
+   3. Process Rotations:
+       * For R (Right) rotations: Add the amount to currentPosition and apply modulo 100.
+       * For L (Left) rotations: Subtract the amount from currentPosition, apply modulo 100, and handle negative results by adding 100.
+   4. Count Zeros: After each rotation, check if currentPosition is 0. If so, increment a counter.
+   5. Output: Print the final count.
+
+  Implementation Details
+   * I created the class org.example.puzzle1.Puzzle1.
+   * Note: The pom.xml was configured for Java 25, but the current environment runs Java 21. I updated the pom.xml to use Java 21 to ensure successful compilation.
+   * The solution assumes the input file is located at src/main/java/org/example/puzzle1/1.input.
+
+  Execution Result
+  I compiled and ran the solution using the provided input file.
+
+  Calculated Password: 1135
+
+  You can run the solution yourself using:
+
+   1 mvn clean compile
+   2 java -cp target/classes org.example.puzzle1.Puzzle1
