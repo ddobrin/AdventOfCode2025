@@ -1,0 +1,25 @@
+  Plan Implemented
+   1. Analyzed Requirements:
+       - Part 1 Rule: Invalid IDs are formed by a sequence of digits repeated exactly twice (e.g., 1212).
+       - Part 2 Rule: Invalid IDs are formed by a sequence of digits repeated at least twice (e.g., 121212 or 111).
+       - Input: Comma-separated ranges of IDs.
+       - Goal: Calculate the sum of all invalid IDs in the given ranges.
+
+   2. Logic Implementation:
+       - Updated Puzzle2.java to parse the input ranges.
+       - Implemented isInvalidPart2(long id) method:
+           - Iterates through all possible pattern lengths (from 1 up to half the string length).
+           - Checks if the ID string is formed by repeating a substring.
+           - Verified correctness with the example case provided (4174379265).
+
+   3. Testing:
+       - Verified against the example input provided in the markdown file.
+       - Ran against the full input file 2.input.
+
+  Execution Result
+  Running the solution with the provided 2.input yielded:
+  Total sum of invalid IDs (Part 2): 34284458938
+
+  You can run the solution using the following command:
+
+   1 javac -d target/classes src/main/java/org/example/cli/puzzle2/Puzzle2.java && java -cp target/classes org.example.cli.puzzle2.Puzzle2

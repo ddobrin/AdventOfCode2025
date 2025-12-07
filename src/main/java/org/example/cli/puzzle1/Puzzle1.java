@@ -1,4 +1,4 @@
-package org.example.puzzle1;
+package org.example.cli.puzzle1;
 
 import java.io.IOException;
 import java.nio.file.Files;
