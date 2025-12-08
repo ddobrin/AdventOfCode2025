@@ -1,0 +1,10 @@
+ I have implemented the solution for Day 5 in src/main/java/org/example/cli/puzzle5/Puzzle5.java.
+
+  The solution parses the range definitions and the list of ingredient IDs, then checks each ID to see if it falls within any of the valid ranges.
+
+  Execution Result:
+   1 Number of fresh ingredients: 517
+
+  You can run the solution using the following command:
+
+   1 javac src/main/java/org/example/cli/puzzle5/Puzzle5.java && java -cp src/main/java org.example.cli.puzzle5.Puzzle5
