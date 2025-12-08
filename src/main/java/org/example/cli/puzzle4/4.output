@@ -1,0 +1,14 @@
+ The puzzle for Day 4 has been implemented in src/main/java/org/example/cli/puzzle4/Puzzle4.java.
+
+  The solution reads the grid from 4.input, iterates through each paper roll (@), counts its neighbors, and applies the accessibility rule (fewer than 4 neighbors).
+
+  Plan Executed:
+   1. Read Input: Loaded the character grid from src/main/java/org/example/cli/puzzle4/4.input.
+   2. Traverse Grid: Iterated through every coordinate in the grid.
+   3. Check Neighbors: For each paper roll (@), examined the 8 adjacent cells.
+   4. Validate: Counted how many neighbors were also paper rolls. If the count was < 4, it was marked as accessible.
+   5. Output: Printed the total count of accessible rolls.
+
+  Test Result:
+  Running the main method produced the following output:
+   1 Accessible rolls: 1344

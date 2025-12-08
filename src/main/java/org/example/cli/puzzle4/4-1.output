@@ -1,0 +1,19 @@
+The solution for Day 4: Printing Department has been implemented in src/main/java/org/example/cli/puzzle4/Puzzle4.java.
+
+  Plan Implemented
+   1. Input Parsing: The main method reads the grid from src/main/java/org/example/cli/puzzle4/4.input.
+   2. Part 1 Logic: It iterates through the grid to identify "accessible" paper rolls (@)—those with fewer than 4 neighbors (@) in the 8 adjacent cells. This initial count is stored as the Part 1 answer.
+   3. Part 2 Logic: The program enters a loop (representing rounds of work by the Elves). In each round:
+       * It identifies all currently accessible rolls based on the grid's current state.
+       * If no rolls are accessible, the process stops.
+       * All identified rolls are removed (replaced with .) simultaneously for that round.
+       * The total count of removed rolls is accumulated.
+   4. Output: The program prints the answers for both Part 1 and Part 2.
+
+  Execution Results
+  Running the solution with the provided input yielded:
+   * Part 1: 1344
+   * Part 2: 8112
+
+  You can run the solution using Maven:
+   1 mvn exec:java -Dexec.mainClass="org.example.cli.puzzle4.Puzzle4"
