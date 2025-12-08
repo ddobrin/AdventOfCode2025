@@ -1,0 +1,19 @@
+ The puzzle "Day 6: Trash Compactor" has been implemented and tested.
+
+  Summary of the approach:
+   1. Parsing: The input is read as a grid of characters. Since the problems are arranged horizontally and separated by columns of spaces, I identify "separator columns" (columns where every row, including the operator row at the bottom, is a space) to split the grid into "blocks".
+   2. Part 1: For each block, all numbers (sequences of digits) are extracted from the text above the operator line. The operator (+ or *) found at the bottom of the block is applied to all these numbers.
+   3. Part 2: For each block, the columns are processed from right to left. Each column (excluding the operator row) forms a number by reading digits from top to bottom (Most Significant Digit at top). These column-formed numbers are then combined using the block's operator.
+   4. Testing: The solution includes a unit test Puzzle6Test which verifies the logic against the example provided in the problem description. Both Part 1 and Part 2 logic produce the expected example results.
+   5. Execution: The main class Puzzle6 runs against the full 6.input file and outputs the final answers.
+
+  Results:
+   - Part 1: 6757749566978
+   - Part 2: 10603075273949
+
+  You can run the solution using:
+
+   1 mvn compile exec:java -Dexec.mainClass="org.example.cli.puzzle6.Puzzle6"
+
+  And run the tests using:
+   1 mvn test -Dtest=Puzzle6Test
