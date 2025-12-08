@@ -1,0 +1,25 @@
+The "Laboratories" puzzle (Day 7) has been implemented and solved.
+
+  Solution Overview
+  The puzzle involves simulating a tachyon beam falling through a manifold containing empty space (.) and splitters (^). The beam starts at S and splits when encountering ^, creating new beams to the left and right.
+
+  Key Logic:
+   - Simulation: processed the grid row by row.
+   - State: Maintained a set of active column indices for the current row.
+   - Splitting: When a beam hits a splitter (^), the split counter is incremented, and new beams are generated at col-1 and col+1 for the next row (since adjacent splitters ^^ do not exist in the input, intra-row cascades are impossible).
+   - Merging: The use of a Set handles beam merging naturally (multiple beams entering the same cell count as one active beam).
+
+  Verification
+   1. Unit Test: A JUnit test (Puzzle7Test.java) was created using the example from the puzzle description. It passes, confirming the logic yields 21 splits.
+   2. Full Input: The solution was run against 7.input.
+       - Result: 1642
+
+  Files Created
+   - src/main/java/org/example/cli/puzzle7/Puzzle7.java: Main solution class.
+   - src/test/java/org/example/cli/puzzle7/Puzzle7Test.java: Test class with the example case.
+
+  You can run the solution using Maven:
+
+   1 mvn compile exec:java -Dexec.mainClass="org.example.cli.puzzle7.Puzzle7"
+  Or run the tests:
+   1 mvn test -Dtest=Puzzle7Test
