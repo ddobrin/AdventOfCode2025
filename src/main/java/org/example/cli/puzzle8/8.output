@@ -1,0 +1,23 @@
+ I have implemented the solution for "Day 8: Playground" in src/main/java/org/example/cli/puzzle8/Puzzle8.java.
+
+  Plan Implemented
+   1. Parsing: The main method reads the 3D coordinates from 8.input.
+   2. Distance Calculation: It computes the squared Euclidean distance between all possible pairs of junction boxes.
+   3. Sorting: All pairs are sorted by distance in ascending order.
+   4. Circuit Formation (Union-Find):
+       * I used a Disjoint Set Union (DSU) data structure.
+       * The algorithm iterates through the top 1000 closest pairs (edges).
+       * For each pair, it attempts to union the two sets. If they are already in the same set, the structure remains unchanged, but the pair is still consumed (as per the problem description's flow).
+   5. Result:
+       * After processing 1000 pairs, it calculates the sizes of all resulting circuits.
+       * It identifies the three largest circuits.
+       * It calculates the product of their sizes.
+
+  Verification
+   * Example Test: I verified the logic using the example data provided in 8.md with the top 10 connections. The code correctly produced the result 40.
+   * Real Input: Running the code against the full 8.input with 1000 connections produced the result 47040.
+
+  Execution
+  You can run the solution using the following command from the project root:
+   1 java src/main/java/org/example/cli/puzzle8/Puzzle8.java
+  (I have also saved the result to src/main/java/org/example/cli/puzzle8/8.output)

@@ -1,0 +1,24 @@
+ I have implemented the solution for Day 8 in src/main/java/org/example/cli/puzzle8/Puzzle8.java.
+
+  Plan & Implementation Details:
+   1. Parsing: The main method reads the 8.input file and parses each line into a Point record (containing id, x, y, z).
+   2. Pair Generation: It generates all unique pairs of points and calculates the squared Euclidean distance for each pair.
+   3. Sorting: The pairs are sorted by distance in ascending order.
+   4. Part 1:
+       - Using a Union-Find (Disjoint Set Union) data structure, the algorithm processes the first 1000 closest pairs.
+       - It tracks the connected components (circuits) formed by these connections.
+       - Finally, it calculates the product of the sizes of the three largest circuits.
+       - Result Verification: The code outputs 47040 for Part 1, which matches the value given in the puzzle description.
+   5. Part 2:
+       - Using a fresh Union-Find structure, the algorithm iterates through the sorted pairs again.
+       - It continues connecting components until only one single circuit remains (i.e., when the number of disjoint sets reaches 1).
+       - It captures the specific pair of junction boxes responsible for this final merge and calculates the product of their X coordinates (216 * 117 in the example, and the calculated result for the full input).
+
+  Execution:
+  You can run the solution using the following command from the project root:
+
+   1 java -cp src/main/java org.example.cli.puzzle8.Puzzle8
+
+  Output:
+   1 Part 1: 47040
+   2 Part 2: 4884971896
