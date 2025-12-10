@@ -1,0 +1,17 @@
+The solution for Puzzle 10 has been implemented in src/main/java/org/example/cli/puzzle10/Puzzle10.java.
+
+  Plan
+   1. Parsing: The input format involves indicator lights [...] and buttons (...). I used regex to extract these components.
+       * Lights are converted to a bitmask (where . is 0 and # is 1).
+       * Buttons are also converted to bitmasks based on the indices they toggle.
+   2. Logic: The problem asks for the minimum number of button presses to reach a target state.
+       * Since pressing a button twice is equivalent to not pressing it at all (XOR operation), we only need to consider pressing each button 0 or 1 time.
+       * With a small number of buttons per machine (max ~13 observed in input), a brute-force approach iterating through all $2^K$ subsets of buttons is efficient.
+       * For each machine, we check all combinations, find those that result in the target state, and pick the one with the minimum number of presses (Hamming weight of the selection
+         vector).
+   3. Optimization: Used long (64-bit integer) for bitmasks, which is sufficient given the small number of lights.
+   4. Verification: The code calculates the sum of minimum presses for all machines.
+
+  Execution
+  I executed the solution using the provided input file.
+  Total presses: 520

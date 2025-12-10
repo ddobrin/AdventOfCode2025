@@ -1,0 +1,21 @@
+The solution for Part 2 is implemented in src/main/java/org/example/cli/puzzle10/Puzzle10Part2.java.
+
+  Logic
+   1. Parsing: Extracts the joltage requirements {...} as the target vector b, and button effects (...) as the matrix columns A.
+   2. Solver:
+       * Constructs the augmented matrix $[A|b]$.
+       * Uses Gaussian elimination (with double precision) to reduce the system to Row Echelon Form (REF).
+       * Identifies pivot variables and free variables.
+       * If the system is inconsistent ($0 = \text{non-zero}$), returns 0 (assuming problem guarantees solution or treat as impossible).
+       * If there are no free variables, checks if the unique solution is non-negative and integer.
+       * If there are free variables, it performs a recursive search over the free variables.
+       * Strict upper bounds for the search are derived from the constraints $Ax = b$ and $A, b \ge 0$, specifically $x_j \le \min(b_i / A_{ij})$ where $A_{ij} > 0$.
+       * The search finds the combination of free variables that minimizes the total sum of presses $\sum x_j$.
+
+  Execution Results
+  The program ran successfully on the input file.
+  Total presses: 20626
+
+  You can run the solution using:
+   1 javac src/main/java/org/example/cli/puzzle10/Puzzle10Part2.java
+   2 java -cp src/main/java org.example.cli.puzzle10.Puzzle10Part2
