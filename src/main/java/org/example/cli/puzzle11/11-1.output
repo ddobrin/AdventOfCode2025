@@ -1,0 +1,22 @@
+ I have implemented the solution for Day 11 Part 2 in src/main/java/org/example/cli/puzzle11/Puzzle11Part2.java.
+
+  The solution:
+   1. Parses the input into a directed graph.
+   2. Identifies critical nodes: svr (start), out (end), dac, and fft (intermediate waypoints).
+   3. Calculates paths by summing two mutually exclusive cases (due to the DAG nature of the graph):
+       * Paths traversing svr -> dac -> fft -> out.
+       * Paths traversing svr -> fft -> dac -> out.
+   4. Counts paths for each segment using DFS with memoization and multiplies them to get the total combinations for each case.
+
+  Testing:
+   * A test case using the provided example from Part 2 was created in src/test/java/org/example/cli/puzzle11/Puzzle11Part2Test.java and passes (result: 2).
+   * The solution was run against the full input file 11.input.
+
+  Result:
+  The total number of paths from svr to out visiting both dac and fft is 473,741,288,064,360.
+
+  You can run the solution using:
+
+   1 java -cp target/classes org.example.cli.puzzle11.Puzzle11Part2
+  Or run the tests:
+   1 mvn test -Dtest=Puzzle11Part2Test

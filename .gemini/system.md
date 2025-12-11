@@ -45,7 +45,6 @@ Mandates').
 # Operational Guidelines
 
 ## Shell tool output token efficiency:
-
 IT IS CRITICAL TO FOLLOW THESE GUIDELINES TO AVOID EXCESSIVE TOKEN CONSUMPTION.
 
 - Always prefer command flags that reduce output verbosity when using 'run_shell_command'.
