@@ -3,50 +3,55 @@ package org.example.cli.puzzle1;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.List;
 
 public class Puzzle1 {
+    public record Solution(long part1, long part2) {}
 
     public static void main(String[] args) {
-        Path inputPath = Paths.get("src/main/java/org/example/puzzle1/1.input");
+        Path inputPath = Path.of("src/main/java/org/example/cli/puzzle1/1.input");
         try {
-            long result = solve(inputPath);
-            System.out.println("Password: " + result);
+            List<String> lines = Files.readAllLines(inputPath);
+            Solution solution = solve(lines);
+            System.out.println("Part 1: " + solution.part1());
+            System.out.println("Part 2: " + solution.part2());
         } catch (IOException e) {
             System.err.println("Error reading input file: " + e.getMessage());
         }
     }
 
-    public static long solve(Path inputPath) throws IOException {
-        int currentPosition = 50;
-        long zeroCount = 0;
+    public static Solution solve(List<String> lines) {
+        int currentPos = 50;
+        long part1Count = 0;
+        long part2Count = 0;
 
-        try (Stream<String> lines = Files.lines(inputPath)) {
-            for (String line : (Iterable<String>) lines::iterator) {
-                if (line.isBlank()) {
-                    continue;
+        for (String line : lines) {
+            if (line.isBlank()) {
+                continue;
+            }
+
+            char dir = line.charAt(0);
+            int steps = Integer.parseInt(line.substring(1));
+
+            for (int i = 0; i < steps; i++) {
+                if (dir == 'R') {
+                    currentPos = (currentPos + 1) % 100;
+                } else if (dir == 'L') {
+                    currentPos = (currentPos - 1 + 100) % 100;
                 }
 
-                char direction = line.charAt(0);
-                int amount = Integer.parseInt(line.substring(1));
-
-                if (direction == 'R') {
-                    currentPosition = (currentPosition + amount) % 100;
-                } else if (direction == 'L') {
-                    currentPosition = (currentPosition - amount) % 100;
-                    if (currentPosition < 0) {
-                        currentPosition += 100;
-                    }
-                } else {
-                    throw new IllegalArgumentException("Unknown direction: " + direction);
-                }
-
-                if (currentPosition == 0) {
-                    zeroCount++;
+                // Part 2: Count every time the dial points at 0 during (or at the end of) a rotation
+                if (currentPos == 0) {
+                    part2Count++;
                 }
             }
+
+            // Part 1: Count times the dial is left pointing at 0 AFTER a rotation
+            if (currentPos == 0) {
+                part1Count++;
+            }
         }
-        return zeroCount;
+
+        return new Solution(part1Count, part2Count);
     }
 }
